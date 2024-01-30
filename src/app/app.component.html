@@ -1,0 +1,205 @@
+<div class="stepper-container">
+  <!-- <button mat-raised-button (click)="isEditable = !isEditable">
+    {{!isEditable ? 'Enable edit mode' : 'Disable edit mode'}}
+  </button> -->
+
+  <mat-stepper linear #stepper>
+    <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Cabecera del Reporte</ng-template>
+        <p>Información de Entidad:</p>
+        <div class="row">
+          <div class="col">
+            <mat-form-field>
+              <mat-label>Entidad</mat-label>
+              <input matInput placeholder="Ingrese nombre entidad" formControlName="entidad" required>
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field>
+              <mat-label>Rol</mat-label>
+              <input matInput placeholder="Ingrese rol entidad" formControlName="rol" required>
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field>
+              <mat-label>Fecha de Ejecución</mat-label>
+              <mat-date-range-input [rangePicker]="picker">
+                <input matStartDate placeholder="Inicio" formControlName="inicioEjecucion" required>
+                <input matEndDate placeholder="Fin" formControlName="finEjecucion" required>
+              </mat-date-range-input>
+              <!-- <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint> -->
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-date-range-picker #picker></mat-date-range-picker>
+            </mat-form-field>
+            <!-- <mat-form-field>
+              <mat-label>Fecha de Ejecución</mat-label>
+              <input matInput [matDatepicker]="picker" placeholder="Seleccione una fecha de ejecucion"
+                formControlName="fechaEjecucion" required>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field> -->
+          </div>
+        </div>
+
+        <p>Duración Total(En Minutos):</p>
+        <div class="row">
+          <div class="col">
+            <mat-form-field>
+              <mat-label>Mantenimiento Programado</mat-label>
+              <input matInput placeholder="En Minutos" formControlName="duraProgramado" required>
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field>
+              <mat-label>Mantenimiento Correctivo</mat-label>
+              <input matInput placeholder="En Minutos" formControlName="duraCorrectivo" required>
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field>
+              <mat-label>Mantenimiento Emergencia</mat-label>
+              <input matInput placeholder="En Minutos" formControlName="duraEmergencias" required>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <p>Cantidad:</p>
+        <div class="row">
+          <div class="col">
+            <mat-form-field>
+              <mat-label>Mantenimiento Programado</mat-label>
+              <input matInput placeholder="Ingrese Cantidad" formControlName="cantProgramado" required>
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field>
+              <mat-label>Mantenimiento Correctivo</mat-label>
+              <input matInput placeholder="Ingrese Cantidad" formControlName="cantCorrectivo" required>
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field>
+              <mat-label>Mantenimiento Emergencia</mat-label>
+              <input matInput placeholder="Ingrese Cantidad" formControlName="cantEmergencias" required>
+            </mat-form-field>
+          </div>
+        </div>
+        <div>
+          <button mat-raised-button color="primary" matStepperNext>Siguiente</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Detalle del Reporte</ng-template>
+        <p>Informacion de Mantenimientos:</p>
+        <div class="row">
+          <div class="col">
+            <mat-form-field>
+              <mat-label>Codigo de Mantenimiento</mat-label>
+              <input matInput placeholder="Ingrese Nro Correlativo" formControlName="codMantenimiento" required>
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field>
+              <mat-label>Fecha de Mantenimiento</mat-label>
+              <mat-date-range-input [rangePicker]="picker">
+                <input matStartDate placeholder="Inicio" formControlName="inicioMantenimiento" required>
+                <input matEndDate placeholder="Fin" formControlName="finMantenimiento" required>
+              </mat-date-range-input>
+              <!-- <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint> -->
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-date-range-picker #picker></mat-date-range-picker>
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field>
+              <mat-label>Hora Inicio</mat-label>
+              <input matInput placeholder="Ingrese la hora inicial"
+                pattern="^([01]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$" formControlName="horaInicio" required>
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field>
+              <mat-label>Hora Fin</mat-label>
+              <input matInput placeholder="Ingrese la hora final" pattern="^([01]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$"
+                formControlName="horaFin" required>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <p>Preguntas relacionadas al Mantenimiento:</p>
+        <div class="row">
+          <div class="col">
+            <mat-form-field>
+              <mat-label>Duración</mat-label>
+              <input matInput placeholder="En Minutos" formControlName="duracion" required>
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field>
+              <mat-label>Tipo de Mantenimiento</mat-label>
+              <input matInput placeholder="Ingrese el tipo" formControlName="tipoMantenimiento" required>
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field>
+              <mat-label>Motivo</mat-label>
+              <input matInput placeholder="Ingrese su motivo" formControlName="motivo" required>
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field>
+              <mat-label>Problemas Detectados</mat-label>
+              <input matInput placeholder="Ingrese problemas detectados" formControlName="probDetectados" required>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <mat-form-field>
+              <mat-label>No Disponibilidad / Degradacion</mat-label>
+              <input matInput placeholder="Si Implicó ?" formControlName="nodisDegradacion" required>
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field>
+              <mat-label>Pase a Produccion</mat-label>
+              <input matInput placeholder="Si Implicó ?" formControlName="paseProduccion" required>
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field>
+              <mat-label>Otras Entidades</mat-label>
+              <input matInput placeholder="Hubo Impactos ?" formControlName="otrEntidades" required>
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field>
+              <mat-label>Comentarios Adicionales</mat-label>
+              <textarea matInput placeholder="Ingrese comentarios" formControlName="comentarios" required>
+              </textarea>
+            </mat-form-field>
+          </div>
+        </div>
+
+
+        <div class="button-container">
+          <button mat-raised-button matStepperPrevious>Atrás</button>
+          <button mat-raised-button color="primary" matStepperNext>Siguiente</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
+</div>

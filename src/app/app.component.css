@@ -1,0 +1,38 @@
+html,
+body {
+  height: 100%;
+}
+
+.mat-stepper-horizontal {
+  margin-top: 8px;
+}
+
+.mat-mdc-form-field {
+  margin-top: 16px;
+}
+
+.button-container {
+  margin-top: 16px;
+  /* Ajusta el margen superior entre los botones */
+}
+
+button {
+  margin-right: 8px;
+  /* Ajusta el margen derecho entre los botones */
+}
+
+.stepper-container {
+  max-width: 75%;
+  margin: 0 auto;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.col {
+  flex: 1;
+  margin-right: 10px;
+  /* Espacio entre los campos */
+}
