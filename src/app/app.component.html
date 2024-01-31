@@ -22,23 +22,22 @@
             </mat-form-field>
           </div>
           <div class="col">
-            <mat-form-field>
+            <!-- <mat-form-field>
               <mat-label>Fecha de Ejecución</mat-label>
               <mat-date-range-input [rangePicker]="picker">
                 <input matStartDate placeholder="Inicio" formControlName="inicioEjecucion" required>
                 <input matEndDate placeholder="Fin" formControlName="finEjecucion" required>
               </mat-date-range-input>
-              <!-- <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint> -->
               <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-date-range-picker #picker></mat-date-range-picker>
-            </mat-form-field>
-            <!-- <mat-form-field>
+            </mat-form-field> -->
+            <mat-form-field>
               <mat-label>Fecha de Ejecución</mat-label>
-              <input matInput [matDatepicker]="picker" placeholder="Seleccione una fecha de ejecucion"
+              <input matInput [matDatepicker]="picker" placeholder="Seleccione una fecha"
                 formControlName="fechaEjecucion" required>
               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field> -->
+            </mat-form-field>
           </div>
         </div>
 
