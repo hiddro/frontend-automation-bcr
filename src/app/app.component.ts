@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
     finMantenimiento: ['', Validators.required],
     horaInicio: ['', Validators.required],
     horaFin: ['', Validators.required],
-    duracion: ['', Validators.required],
+    duracion: ['', [Validators.required, Validators.pattern(/^\d+$/)]],
     tipoMantenimiento: ['', Validators.required],
     motivo: ['', Validators.required],
     probDetectados: ['', Validators.required],
@@ -43,8 +43,10 @@ export class AppComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
-
   }
 
+  obtenerValoresFormulario() {
+    console.log(this.secondFormGroup.value);
+  }
 
 }

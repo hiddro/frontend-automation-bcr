@@ -105,13 +105,13 @@
           <div class="col">
             <mat-form-field>
               <mat-label>Fecha de Mantenimiento</mat-label>
-              <mat-date-range-input [rangePicker]="picker">
+              <mat-date-range-input [rangePicker]="pickerMant">
                 <input matStartDate placeholder="Inicio" formControlName="inicioMantenimiento" required>
                 <input matEndDate placeholder="Fin" formControlName="finMantenimiento" required>
               </mat-date-range-input>
               <!-- <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint> -->
-              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-date-range-picker #picker></mat-date-range-picker>
+              <mat-datepicker-toggle matIconSuffix [for]="pickerMant"></mat-datepicker-toggle>
+              <mat-date-range-picker #pickerMant></mat-date-range-picker>
             </mat-form-field>
           </div>
           <div class="col">
@@ -189,6 +189,7 @@
 
         <div class="button-container">
           <button mat-raised-button matStepperPrevious>Atrás</button>
+          <button (click)="obtenerValoresFormulario()">Generar</button>
           <button mat-raised-button color="primary" matStepperNext>Siguiente</button>
         </div>
       </form>
