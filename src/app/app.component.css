@@ -13,12 +13,12 @@ body {
 
 .button-container {
   margin-top: 16px;
-  /* Ajusta el margen superior entre los botones */
+  display: flex;
+  justify-content: center;
 }
 
 button {
   margin-right: 8px;
-  /* Ajusta el margen derecho entre los botones */
 }
 
 .stepper-container {

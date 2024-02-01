@@ -42,14 +42,18 @@ export class AppComponent implements OnInit {
     comentarios: ['', Validators.required]
   });
   isEditable = true;
+  sLoader!: boolean;
 
   constructor(private _formBuilder: FormBuilder,
     private httpService: HttpService) { }
 
   ngOnInit(): void {
+    this.sLoader = false;
   }
 
   obtenerValoresFormulario() {
+
+    this.sLoader = true;
 
     let oReporte = {
       nombreEntidad: this.firstFormGroup.value.entidad ?? '',
@@ -77,17 +81,19 @@ export class AppComponent implements OnInit {
       comentAdicionales: this.secondFormGroup.value.comentarios ?? '',
     };
 
-    // this.httpService.generateReport(oReporte).subscribe((response: any) => {
-    //   console.log(response);
-    // });
+    setTimeout(() => {
 
-    this.httpService.generateReport(oReporte).subscribe((response: Blob) => {
-      const file = new Blob([response], { type: 'application/pdf' });
-      const fileURL = URL.createObjectURL(file);
-      window.open(fileURL); // Abre el PDF en una nueva ventana
-    }, (error) => {
-      console.error('Error al generar el reporte:', error);
-    });
+      this.httpService.generateReport(oReporte).subscribe((response: Blob) => {
+        const file = new Blob([response], { type: 'application/pdf' });
+        const fileURL = URL.createObjectURL(file);
+        this.sLoader = false;
+        window.open(fileURL);
+      }, (error) => {
+        console.error('Error al generar el reporte:', error);
+      });
+    }, 2000);
+
+
   }
 
   formatDate(fecha: Date) {

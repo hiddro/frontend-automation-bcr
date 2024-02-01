@@ -84,7 +84,7 @@
             </mat-form-field>
           </div>
         </div>
-        <div>
+        <div class="button-container">
           <button mat-raised-button color="primary" matStepperNext>Siguiente</button>
         </div>
       </form>
@@ -108,7 +108,6 @@
                 <input matStartDate placeholder="Inicio" formControlName="inicioMantenimiento" required>
                 <input matEndDate placeholder="Fin" formControlName="finMantenimiento" required>
               </mat-date-range-input>
-              <!-- <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint> -->
               <mat-datepicker-toggle matIconSuffix [for]="pickerMant"></mat-datepicker-toggle>
               <mat-date-range-picker #pickerMant></mat-date-range-picker>
             </mat-form-field>
@@ -188,17 +187,17 @@
 
         <div class="button-container">
           <button mat-raised-button matStepperPrevious>Atrás</button>
-          <button (click)="obtenerValoresFormulario()">Generar</button>
           <button mat-raised-button color="primary" matStepperNext>Siguiente</button>
         </div>
       </form>
     </mat-step>
     <mat-step>
-      <ng-template matStepLabel>Done</ng-template>
-      <p>You are now done.</p>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="stepper.reset()">Reset</button>
+      <ng-template matStepLabel>Reporte</ng-template>
+      <!-- <p>You are now done.</p> -->
+      <div class="button-container">
+        <button mat-raised-button matStepperPrevious *ngIf="!sLoader">Atrás</button>
+        <button mat-raised-button color="primary" (click)="obtenerValoresFormulario()" *ngIf="!sLoader">Generar</button>
+        <mat-spinner *ngIf="sLoader"></mat-spinner>
       </div>
     </mat-step>
   </mat-stepper>
